@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>jQuery UI Resizable - Helper</title>
+	<link type="text/css" href="css/custom-theme/jquery-ui-1.8rc3.custom.css" rel="stylesheet" />	
+	<script type="text/javascript" src="jquery-1.4.2.js"></script>
+	<script type="text/javascript" src="ui/jquery.effects.core.js"></script>
+	<script type="text/javascript" src="ui/jquery.ui.core.js"></script>
+	<script type="text/javascript" src="ui/jquery.ui.widget.js"></script>
+	<script type="text/javascript" src="ui/jquery.ui.mouse.js"></script>
+	<script type="text/javascript" src="ui/jquery.ui.resizable.js"></script>
+	<!-- themeswitchertool -->
+	<!--<script type="text/javascript" src="http://jqueryui.com/themeroller/themeswitchertool/" ></script>-->
+
+
+	<style type="text/css">
+	#left { width: 150px; height: 300px; padding: 0.5em; }
+	#left h3 { text-align: center; margin: 0; }
+	.ui-resizable-helper { border: 2px dotted #00F; }
+	.ui-editframe { padding: .1em; }
+	.ui-editbar { padding: 1em; }
+	#button{padding:.5em 1em;text-decoration:none}
+	.editmode_status { padding: 1em; }
+	</style>
+	<script type="text/javascript">
+	$(function() {
+		$("#button").click(
+			function(){
+				$('.editframe').toggleClass('ui-editframe ui-widget-content', 0);
+				$('.editmode_status').toggle();
+				if ($('.resizable').hasClass('ui-resizable')) {
+					$('.resizable').resizable('destroy');
+				} else {
+					$('.resizable').resizable({handles: 'e'});
+				}
+				//$('#resizable').toggleClass('resizable', 0, resizable_callback);
+				return false;
+			});
+		/* enable resizable */
+		$('.resizable').resizable({handles: 'e'});
+	});
+
+	$(document).ready(function(){
+		//$('#switcher').themeswitcher();
+	});
+
+	</script>
+</head>
+<body>
+	<div id="switcher"></div>
+<div class="ui-widget demo">
+	<div class="ui-editbar ui-widget-content">
+		<a href="#" id="button" class="ui-state-default ui-corner-all">Edit Mode</a><span class="editmode_status" style="display:none">Disabled</span><span class="editmode_status">Enabled</span>
+	</div>
+
+	<div class="editframe ui-editframe ui-widget-content">	
+<div id="left" class="resizable ui-widget-content ui-corner-right">
+	<h3 class="ui-widget-header ui-corner-all">Helper</h3>
+</div>
+</div>
+</div><!-- End demo -->
+
+</body>
+</html>
+
